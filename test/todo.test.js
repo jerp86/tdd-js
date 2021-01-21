@@ -8,7 +8,7 @@ describe('todo', () => {
     it('should return invalid when creating an object without text', () => {
       const data = {
         text: '',
-        when: new Date("2020-01-21"),
+        when: new Date("2021-01-21"),
       };
 
       const todo = new Todo(data);
@@ -29,6 +29,16 @@ describe('todo', () => {
       expect(result).to.be.not.ok;
     });
 
-    it('should have "id", "text", "when" and "status" properties after creating object');
+    it('should have "id", "text", "when" and "status" properties after creating object', () => {
+      const data = {
+        text: 'Hello World',
+        when: new Date("2021-01-21"),
+      };
+
+      const todo = new Todo(data);
+      const result = todo.isValid();
+
+      expect(result).to.be.ok;
+    });
   });
 });
