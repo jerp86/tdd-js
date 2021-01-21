@@ -10,7 +10,9 @@ class Todo {
   }
 
   isValid() {
-    return null;
+    // !!- transforma a variável em booleano
+    // 0 ou "" ou false são valores falsos
+    return !!this.text;
   }
 }
 
