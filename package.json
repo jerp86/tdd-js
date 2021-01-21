@@ -1,0 +1,22 @@
+{
+  "name": "tdd-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["js", "test", "mocha", "chai", "nyc", "sinon"],
+  "author": {
+    "name": "José Eduardo Rodrigues Pinto <jerp86>",
+    "email": "jerp4@hotmail.com",
+    "url": "https://www.linkedin.com/in/jerp/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.3"
+  }
+}
