@@ -3,9 +3,11 @@ class TodoService {
     this.todoRepository = todoRepository;
   }
 
+  list(query) {
+    return this.todoRepository.list().map(({ meta, $loki, ...result }) => result);
+  }
+  
   create(todoItem) {}
-
-  list(query) {}
 }
 
 module.exports = TodoService;

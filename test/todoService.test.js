@@ -32,6 +32,11 @@ describe('todoService', () => {
       todoService = new TodoService(dependencies);
     });
 
-    it('should return data on a specific format');
+    it('should return data on a specific format', () => {
+      const result = todoService.list();
+      const [{ meta, $loki, ...expected }] = mockDatabase;
+
+      expect(result).to.be.deep.equal([expected]);
+    });
   });
 });
