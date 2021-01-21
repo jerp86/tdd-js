@@ -8,7 +8,14 @@
     "test:dev": "npx mocha test/ -w",
     "test:cov": "npx nyc --reporters=html,text npm test"
   },
-  "keywords": ["js", "test", "mocha", "chai", "nyc", "sinon"],
+  "keywords": [
+    "js",
+    "test",
+    "mocha",
+    "chai",
+    "nyc",
+    "sinon"
+  ],
   "author": {
     "name": "José Eduardo Rodrigues Pinto <jerp86>",
     "email": "jerp4@hotmail.com",
@@ -17,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "chai": "^4.2.0",
+    "lokijs": "^1.5.11",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
     "sinon": "^9.2.3"
