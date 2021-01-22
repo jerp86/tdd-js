@@ -5,7 +5,6 @@ const { createSandbox } = require('sinon');
 const TodoService = require('../src/todoService');
 
 describe('todoService', () => {
-  let todoService;
   let sandbox;
 
   before(() => {
@@ -22,6 +21,7 @@ describe('todoService', () => {
       },
     ];
 
+    let todoService;
     beforeEach(() => {
       const dependencies = {
         todoRepository: {
@@ -38,5 +38,24 @@ describe('todoService', () => {
 
       expect(result).to.be.deep.equal([expected]);
     });
+  });
+
+  describe('#create', () => {
+    let todoService;
+    beforeEach(() => {
+      const dependencies = {
+        todoRepository: {
+          create: sandbox.stub().returns(true),
+        }
+      };
+
+      todoService = new TodoService(dependencies);
+    });
+
+    it('shouldn\'t save todo item with invalid data');
+    
+    it('should save todo item with late status when the property is further than today');
+    
+    it('should save todo item with pending status');
   });
 });
