@@ -12,6 +12,8 @@ describe('todoService', () => {
     sandbox = createSandbox()
   });
 
+  afterEach(() => sandbox.restore());
+
   describe('#list', () => {
     const mockDatabase = [
       {
@@ -74,7 +76,31 @@ describe('todoService', () => {
       expect(result).to.be.deep.equal(expected);
     });
     
-    it('should save todo item with late status when the property is further than today');
+    it('should save todo item with late status when the property is further than today', () => {
+      const properties = {
+        text: 'I must walk my dogs',
+        when: new Date('2020-12-01 12:00:00 GMT-0'),
+      };
+      const expectedId = '000001';
+      
+      const uuid = require('uuid');
+      const fakeUUID = sandbox.fake.returns(expectedId);
+      sandbox.replace(uuid, uuid.v4.name, fakeUUID);
+      
+      const data = new Todo(properties);
+
+      const today = new Date('2020-12-02');
+      sandbox.useFakeTimers(today.getTime());
+
+      todoService.create(data);
+
+      const expectedCallWith = {
+        ...data,
+        status: "late"
+      };
+
+      expect(todoService.todoRepository.create.calledOnceWithExactly(expectedCallWith)).to.be.ok;
+    });
     
     it('should save todo item with pending status');
   });

@@ -8,7 +8,6 @@ class TodoService {
     }
   
   create(todoItem) {
-    console.log('item-', isNaN(todoItem.when))
     if (!todoItem.isValid()) {
       return {
         error: {
@@ -17,6 +16,15 @@ class TodoService {
         },
       };
     }
+
+    const { when } = todoItem;
+    const today = new Date();
+    const todo = {
+      ...todoItem,
+      status: when > today ? 'pending' : 'late',
+    }
+
+    return this.todoRepository.create(todo);
   }
 }
 
